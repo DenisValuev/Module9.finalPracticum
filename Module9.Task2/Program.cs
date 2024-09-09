@@ -1,4 +1,6 @@
-﻿namespace Module9.Task2
+﻿using Module9.Task2.Models;
+
+namespace Module9.Task2
 {
     internal class Program
     {
@@ -12,9 +14,9 @@
                 {
                     numberReader.Read();
                 }
-                catch (FormatException)
+                catch (NumberException e)
                 {
-                    Console.WriteLine("Не верно выбран вариант сортировки, попробуйте еще раз"); ;
+                    Console.WriteLine(e.Message);
                 }
             }
         }
@@ -64,7 +66,7 @@
             Console.WriteLine("Выберите вариант сортировки: \n1 - Сортировка списка А-Я\n2 - Сортировка списка Я-А");
             int number = Convert.ToInt32(Console.ReadLine());
 
-            if (number != 1 && number != 2) throw new FormatException();
+            if (number != 1 && number != 2) throw new NumberException("Не верно выбран вариант сортировки, попробуйте еще раз");
 
             
             NumberEntered(number, array);
